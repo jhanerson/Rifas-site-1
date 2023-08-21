@@ -14,4 +14,13 @@
     height: 20%;
 }
 
+.contenedor-padre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: auto;
+    border: 1px;
+    margin: auto;
+
+}
 
