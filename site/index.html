@@ -43,7 +43,7 @@
             <div class="col-md-4">
                 <div class="card-body">
                     <p class="card-text">
-                        <h1>Motoaventura</h1>
+                    <h1>Motoaventura</h1>
                     </p>
                 </div>
             </div>
@@ -171,123 +171,135 @@
                         </div>
                     </label>
                     <br>
-                    <label for="cantidadInput">Cantidad de Boletas:</label>
-                    <input type="number" id="cantidadInput" min="2" value="2"> <!-- Establecer el mínimo en 2 -->
                 </form>
+                <select class="form-select" aria-label="Default select example" id="cantidadBoletasSelect">
+                    <option selected>Cantidad de Boletas:</option>
+                    <option value="6">6</option>
+                    <option value="12">12</option>
+                    <option value="24">24</option>
+                    <option value="48">48</option>
+                    <option value="96">96</option>
+                    <option value="192">192</option>
+                    <option value="384">384</option>
+                    <option value="500">500</option>
+                </select>
             </div>
         </div>
     </div>
 
+
+
+
     <script>
-        // Precio unitario de cada boleta
-        const precioUnitario = 1800;
+        document.addEventListener("DOMContentLoaded", function () {
+            const precioPorBoleta = 1800;
+            const precioTotalElement = document.getElementById("precioTotal");
+            const cantidadBoletasElement = document.getElementById("cantidadBoletas");
+            const selectCantidadBoletas = document.getElementById("cantidadBoletasSelect");
 
-        // Elementos del DOM
-        const cantidadInput = document.getElementById('cantidadInput');
-        const precioTotalSpan = document.getElementById('precioTotal');
-        const cantidadBoletasSpan = document.getElementById('cantidadBoletas');
+            selectCantidadBoletas.addEventListener("change", function () {
+                const cantidadSeleccionada = parseInt(selectCantidadBoletas.value);
+                const precioTotal = cantidadSeleccionada * precioPorBoleta;
 
-        // Agregar el evento de input para actualizar el precio
-        cantidadInput.addEventListener('input', actualizarPrecio);
-
-        // Al cargar la página, también actualizar el precio si la cantidad inicial es mayor que cero
-        actualizarPrecio();
-
-        function actualizarPrecio() {
-            // Obtener la cantidad de boletas del input
-            const cantidadBoletas = parseInt(cantidadInput.value);
-
-            // Calcular el precio total
-            const precioTotal = cantidadBoletas * precioUnitario;
-
-            // Mostrar los valores actualizados en el DOM
-            precioTotalSpan.textContent = precioTotal.toLocaleString();
-            cantidadBoletasSpan.textContent = cantidadBoletas.toLocaleString();
-        }
+                precioTotalElement.textContent = precioTotal;
+                cantidadBoletasElement.textContent = cantidadSeleccionada + " Boletas";
+            });
+        });
     </script>
 
-    <!-- -->
+
+        <!-- -->
 
 
-    <hr>
+        <hr>
 
-    <footer>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn color-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-            style="color:grey;">
-            Términos y Condiciones
-        </button>
+        <footer>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn color-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                style="color:grey;">
+                Términos y Condiciones
+            </button>
 
-        <!-- Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Términos y Condiciones</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Términos y Condiciones</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
 
-                        1. Definiciones:
+                            1. Definiciones:
 
-                        "Boletas": Se refiere a los números de participación asignados a cada participante al adquirir
-                        su entrada en la lotería "MotoAventura".
-                        "Ganador": Hace referencia al participante cuyo número de boleta coincide con el número sorteado
-                        en la fecha designada.
-                        "Vehículo": Indica el premio principal ofrecido en la lotería "MotoAventura", que puede variar
-                        en marca y modelo según la edición de la lotería.
-                        "Entrega": Se refiere a la transferencia legal del vehículo al ganador o al otorgamiento del
-                        equivalente en dinero en caso de imposibilidad de entrega del vehículo.
-                        2. Responsabilidades de la Plataforma:
+                            "Boletas": Se refiere a los números de participación asignados a cada participante al
+                            adquirir
+                            su entrada en la lotería "MotoAventura".
+                            "Ganador": Hace referencia al participante cuyo número de boleta coincide con el número
+                            sorteado
+                            en la fecha designada.
+                            "Vehículo": Indica el premio principal ofrecido en la lotería "MotoAventura", que puede
+                            variar
+                            en marca y modelo según la edición de la lotería.
+                            "Entrega": Se refiere a la transferencia legal del vehículo al ganador o al otorgamiento del
+                            equivalente en dinero en caso de imposibilidad de entrega del vehículo.
+                            2. Responsabilidades de la Plataforma:
 
-                        La plataforma del sitio web "MotoAventura" se compromete a:
+                            La plataforma del sitio web "MotoAventura" se compromete a:
 
-                        Gestionar de manera transparente y justa el sorteo de la lotería.
-                        Comunicar claramente las fechas de sorteo y plazos de participación.
-                        Mantener la confidencialidad de los datos personales de los participantes según lo establecido
-                        en su política de privacidad.
-                        3. Condiciones de Participación:
+                            Gestionar de manera transparente y justa el sorteo de la lotería.
+                            Comunicar claramente las fechas de sorteo y plazos de participación.
+                            Mantener la confidencialidad de los datos personales de los participantes según lo
+                            establecido
+                            en su política de privacidad.
+                            3. Condiciones de Participación:
 
-                        La adquisición de boletas para la lotería "MotoAventura" implica la aceptación de los términos y
-                        condiciones de este Contrato.
-                        Cada boleta adquirida tiene un costo especificado en el sitio web y da derecho a una oportunidad
-                        de ganar.
-                        El número de boletas disponibles es limitado y se detallará en el sitio web.
-                        4. Cláusulas de Exclusión de Responsabilidad:
+                            La adquisición de boletas para la lotería "MotoAventura" implica la aceptación de los
+                            términos y
+                            condiciones de este Contrato.
+                            Cada boleta adquirida tiene un costo especificado en el sitio web y da derecho a una
+                            oportunidad
+                            de ganar.
+                            El número de boletas disponibles es limitado y se detallará en el sitio web.
+                            4. Cláusulas de Exclusión de Responsabilidad:
 
-                        El sitio web "MotoAventura" no se hace responsable por problemas técnicos, retrasos en el sorteo
-                        o cualquier otro inconveniente fuera de su control.
-                        Los participantes comprenden que la lotería está sujeta a la venta total de las boletas para la
-                        realización del sorteo.
-                        5. Entrega del Premio:
+                            El sitio web "MotoAventura" no se hace responsable por problemas técnicos, retrasos en el
+                            sorteo
+                            o cualquier otro inconveniente fuera de su control.
+                            Los participantes comprenden que la lotería está sujeta a la venta total de las boletas para
+                            la
+                            realización del sorteo.
+                            5. Entrega del Premio:
 
-                        Si todas las boletas se venden y el sorteo tiene lugar, el ganador recibirá el vehículo
-                        especificado en el plazo estipulado.
-                        En caso de que la entrega del vehículo sea imposible, el sitio web "MotoAventura" entregará al
-                        ganador el equivalente en dinero según el valor actual.
-                        6. Modificaciones Futuras:
+                            Si todas las boletas se venden y el sorteo tiene lugar, el ganador recibirá el vehículo
+                            especificado en el plazo estipulado.
+                            En caso de que la entrega del vehículo sea imposible, el sitio web "MotoAventura" entregará
+                            al
+                            ganador el equivalente en dinero según el valor actual.
+                            6. Modificaciones Futuras:
 
-                        El sitio web "MotoAventura" se reserva el derecho de realizar modificaciones en este Contrato
-                        con previo aviso a los participantes.
+                            El sitio web "MotoAventura" se reserva el derecho de realizar modificaciones en este
+                            Contrato
+                            con previo aviso a los participantes.
 
 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary">Entiendo</button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary">Entiendo</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </footer>
-    <!-- -->
-    <!-- -->
-    <script src="code.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- -->
-    <!-- -->
-</body>
+        </footer>
+        <!-- -->
+        <!-- -->
+        <script src="code.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- -->
+        <!-- -->
+    </body>
 
 </html>
